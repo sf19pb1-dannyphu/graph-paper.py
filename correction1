@@ -1,0 +1,55 @@
+"""
+graph paper.py
+
+Makes a graph chart based on your input.
+"""
+
+import sys
+
+rowNum = "How many rows? "
+columnNum = "How many columns? "
+rowSpace = "How many spaces within each row? "
+colSpace = "How many spaces within each column? "
+
+print("Hello, let's build a graph.")
+print()
+
+# Get inputs from user and entry checker
+def getInt(prompt):
+    assert isinstance(prompt, str)
+
+    while True:
+        try:
+            s = input(prompt)
+        except EOFError:
+            sys.exit(1)
+        except KeyboardInterrupt:
+            sys.exit(1)
+
+        try:
+            i = int(s)
+        except ValueError:
+            print()
+            print("Sorry, please enter a whole number.")
+        else:
+            return i
+
+row = getInt(rowNum)
+column = getInt(columnNum)
+rowSpace = getInt(rowSpace)
+colSpace = getInt(colSpace)
+
+## Code for graph printing ##
+
+colsp = colSpace * "-"
+colem = colSpace * " "
+
+for outer in range(row):
+    print(f"+{colsp}" * column + "+")
+
+    for inner in range(rowSpace):
+        print(f"|{colem}" * column + "|")
+
+print(f"+{colsp}" * column + "+")
+
+sys.exit(0)
