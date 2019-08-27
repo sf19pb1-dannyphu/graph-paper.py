@@ -1,0 +1,50 @@
+"""
+graph paper.py
+
+Makes a graph chart based on your input.
+"""
+
+import sys
+
+#questions is a list containing 4 smallers lists.
+#Each smaller list contains 2 strings.
+
+questions = [
+    ["rowNum",    "How many rows?"],
+    ["columnNum", "How many columns?"],
+    ["rowSpace",  "How many spaces within each row?"],
+    ["colSpace",  "How many spaces within each column?"]
+]
+
+print("Hello, let's build a graph.")
+print()
+dictionaryOfVariables = globals()
+
+for question in questions:
+    while True:
+        variableName = question[0]
+        prompt = question[1]
+        s = input(prompt + " ")
+
+        try:
+            dictionaryOfVariables[variableName] = int(s)
+        except ValueError:
+            print()
+            print("Sorry, please enter a whole number.")
+        else:
+            break   #out of the while loop
+
+## Code for graph printing ##
+
+colsp = colSpace * "-"
+colem = colSpace * " "
+
+for outer in range(rowNum):
+    print(f"+{colsp}" * columnNum + "+")
+
+    for inner in range(rowSpace):
+        print(f"|{colem}" * columnNum + "|")
+
+print(f"+{colsp}" * columnNum + "+")
+
+sys.exit(0)
